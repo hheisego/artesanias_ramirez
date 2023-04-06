@@ -1,0 +1,49 @@
+<div class="modal-body">
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <input type="hidden" class="form-control" [(ngModel)]="request.id" />
+            <input type="hidden" class="form-control" [(ngModel)]="request.fechaPedido" />
+            <label class="col-sm-2 col-form-label">Cliente: </label>
+            <input type="text" class="form-control" [(ngModel)]="request.Cliente" *ngIf="mission=='Agregar Pedido'" />
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-1 col-form-label">Cantidad: </label>
+            <input type="text" class="form-control" [(ngModel)]="request.Cantidad" />
+        </div>
+        <div class="col-sm-8">
+            <label class="col-sm-4 col-form-label">Descripcion: </label>
+            <input type="text" class="form-control" [(ngModel)]="request.Descripcion" />
+        </div>
+        <div class="col-sm-8">
+            <label class="col-sm-2 col-form-label">Fecha de Entrega: </label>
+            <input type="text" class="form-control" [(ngModel)]="request.fechaEntrega" />
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-2 col-form-label">Anticipo</label>
+            <input type="text" class="form-control" [(ngModel)]="request.Anticipo" required />
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-2 col-form-label">Importe: </label>
+            <input type="text" class="form-control" [(ngModel)]="request.Importe" />
+        </div>
+        <div class="col-sm-5">
+            <label class="col-sm-2 col-form-label">Total: </label>
+            <input type="text" class="form-control" [(ngModel)]="request.Total" />
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+
+    <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only"></span>
+    </div>
+
+    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cancelar </button>-->
+    <button *ngIf="request.id" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="onFormSubmit()">Editar</button>
+
+    <button *ngIf="!request.id" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+        (click)="onFormSubmit()">Agregar</button>
+</div>
+
+

@@ -1,0 +1,59 @@
+<div class="col-6">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th><i class="bi-5 bi-plus-circle" (click)="addUserClick()" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" data-placement="top" title={{ModalTitle}}></i></th>
+                <th></th>
+
+            </tr>
+            <tr>
+                <th>Nota</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Cantidad</th>
+                <th>Descripcion</th>
+                <th>Fecha de Entrega</th>
+                <th>Anticipo</th>
+                <th>Importe</th>
+                <th>Restante</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pedido of pedidos;">
+                <td>{{pedido.id}}</td>
+                <td role="button">{{pedido.fechaPedido}}</td>
+                <td role="button">{{pedido.Cliente}}</td>
+                <td role="button">{{pedido.Cantidad}}</td>
+                <td role="button">{{pedido.Descripcion}}</td>
+                <td role="button">{{pedido.fechaEntrega}}</td>
+                <td role="button">{{pedido.Anticipo}}</td>
+                <td role="button">{{pedido.Importe}}</td>
+                <td role="button">{{pedido.Restante}}</td>
+                <td role="button">{{pedido.Total}}</td>
+                <td><i class="bi-5 bi-trash" (click)="eliminarUser(pedido.id)"></i>
+                    <i class="bi-5 bi-pencil-square" (click)="editUserClick(pedido)" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" data-placement="top" title="Editar"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{ModalTitle}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal()"></button>
+            </div>
+            <app-add-edit-pedido [mission]="ModalTitle" [request]="newPedido" (update)="respuestaUpdate($event)"
+                *ngIf="taskMission"></app-add-edit-pedido>
+        </div>
+    </div>
+</div>
